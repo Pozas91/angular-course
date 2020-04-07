@@ -1,5 +1,6 @@
 // ng g c recipes/recipes-list --skipTests=true
 import {Component, OnInit} from '@angular/core';
+import {Recipe} from '../recipe.model';
 
 @Component({
   selector: 'app-recipes-list',
@@ -8,7 +9,9 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class RecipesListComponent implements OnInit {
-  recipes = [];
+  recipes: Recipe[] = [
+    new Recipe('A Test Recipe', 'This is simply a test', 'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg'),
+  ];
 
   constructor() {
   }
