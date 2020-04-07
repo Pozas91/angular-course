@@ -6,7 +6,9 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './recipes-list.component.html',
   styleUrls: ['./recipes-list.component.css']
 })
+
 export class RecipesListComponent implements OnInit {
+  recipes = [];
 
   constructor() {
   }
