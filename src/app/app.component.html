@@ -1,8 +1,11 @@
 <div class="container-fluid">
   <app-cockpit></app-cockpit>
-  <div class="row">
+
+  <div class="row mt-3">
     <div class="col-12">
-      <app-server-element *ngFor="let serverElement of serverElements"></app-server-element>
+      <app-server-element
+        *ngFor="let serverElement of serverElements"
+        [element]="serverElement"></app-server-element>
     </div>
   </div>
 </div>
