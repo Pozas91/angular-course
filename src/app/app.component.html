@@ -1,5 +1,8 @@
 <div class="container-fluid">
-  <app-cockpit></app-cockpit>
+  <app-cockpit
+    (serverCreated)="onServerAdded($event)"
+    (blueprintCreated)="onBlueprintAdded($event)"
+  ></app-cockpit>
 
   <div class="row mt-3">
     <div class="col-12">
