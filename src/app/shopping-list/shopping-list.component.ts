@@ -1,5 +1,5 @@
 // ng g c shopping-list --skipTests=true
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
+  ingredients = [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
