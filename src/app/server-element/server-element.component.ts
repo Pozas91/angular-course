@@ -7,7 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ServerElementComponent implements OnInit {
   // By default all components are private (only available inside the class), so we use @Input()
-  @Input() element: { type: string, name: string, content: string };
+  // We use an alias to use this property from output.
+  @Input('srvElement') element: { type: string, name: string, content: string };
 
   constructor() {
   }
