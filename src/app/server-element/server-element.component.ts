@@ -3,13 +3,15 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  Component,
+  Component, ContentChild,
   DoCheck,
+  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  SimpleChanges
+  SimpleChanges,
+  ViewChild
 } from '@angular/core';
 
 @Component({
@@ -30,6 +32,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   // We use an alias to use this property from output.
   @Input('srvElement') element: { type: string, name: string, content: string };
   @Input() name: string;
+  @ViewChild('heading') header: ElementRef;
 
   constructor() {
     console.log('ServerElement: constructor called!');
@@ -41,6 +44,8 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
 
   ngOnInit(): void {
     console.log('ServerElement: ngOnInit called!');
+    console.log(this.header);
+    console.log(this.header.nativeElement.textContent);
   }
 
   ngDoCheck(): void {
