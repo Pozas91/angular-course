@@ -1,1 +1,12 @@
-<p>recipe-item works!</p>
+<a href="#" class="list-group-item clearfix">
+  <div class="row">
+    <div class="col">
+      <h4>{{recipe.name}}</h4>
+      <p>{{recipe.description}}</p>
+    </div>
+
+    <div class="col text-center">
+      <img alt="{{recipe.name}}" class="img-thumbnail img-fluid" [src]="recipe.imagePath"/>
+    </div>
+  </div>
+</a>

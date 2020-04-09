@@ -6,18 +6,8 @@
   </div>
 
   <div class="col-12">
-    <a href="#" class="list-group-item clearfix" *ngFor="let recipe of recipes">
-      <div class="row">
-        <div class="col">
-          <h4>{{recipe.name}}</h4>
-          <p>{{recipe.description}}</p>
-        </div>
-
-        <div class="col text-center">
-          <img alt="{{recipe.name}}" class="img-thumbnail img-fluid" [src]="recipe.imagePath"/>
-        </div>
-      </div>
-    </a>
-    <app-recipe-item></app-recipe-item>
+    <app-recipe-item
+      *ngFor="let recipeEl of recipes"
+      [recipe]="recipeEl"></app-recipe-item>
   </div>
 </div>
