@@ -1,6 +1,7 @@
 // ng g c recipes/recipes-list --skipTests=true
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Recipe} from '../recipe.model';
+import {RecipeService} from '../recipe.service';
 
 @Component({
   selector: 'app-recipes-list',
@@ -11,16 +12,13 @@ import {Recipe} from '../recipe.model';
 export class RecipesListComponent implements OnInit {
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
-  recipes: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg'),
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg'),
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg'),
-  ];
+  recipes: Recipe[];
 
-  constructor() {
+  constructor(private recipeService: RecipeService) {
   }
 
   ngOnInit(): void {
+    this.recipes = this.recipeService.getRecipes();
   }
 
   onRecipeSelected(recipe: Recipe) {
