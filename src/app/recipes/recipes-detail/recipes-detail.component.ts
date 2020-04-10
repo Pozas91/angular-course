@@ -1,6 +1,7 @@
 // ng g c recipes/recipes-detail --skipTests=true
 import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../recipe.model';
+import {RecipeService} from '../recipe.service';
 
 @Component({
   selector: 'app-recipes-detail',
@@ -10,10 +11,13 @@ import {Recipe} from '../recipe.model';
 export class RecipesDetailComponent implements OnInit {
   @Input() recipe: Recipe;
 
-  constructor() {
+  constructor(private recipeService: RecipeService) {
   }
 
   ngOnInit(): void {
   }
 
+  onAddToShoppingList() {
+    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  }
 }
