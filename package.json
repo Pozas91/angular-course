@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "reinstall": "rd /S /Q ./node_modules && npm i --no-bin-links"
+    "reinstall": "rd /S /Q node_modules && npm i --no-bin-links"
   },
   "private": true,
   "dependencies": {
