@@ -23,12 +23,11 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signUpForm.get('userData.email'));
+    console.log(this.signUpForm);
   }
 
   onAddHobby() {
     const control = new FormControl(null, Validators.required);
-
     (this.signUpForm.get('hobbies') as FormArray).push(control);
   }
 
