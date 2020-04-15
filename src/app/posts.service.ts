@@ -24,7 +24,7 @@ export class PostsService {
   }
 
   fetchPosts() {
-    this.http
+    return this.http
       .get<{ [key: string]: Post }>('https://curso-angular-4aa37.firebaseio.com/posts.json')
       .pipe(map((responseData) => {
         const postsArray: Post[] = [];
@@ -36,10 +36,6 @@ export class PostsService {
         }
 
         return postsArray;
-      }))
-      .subscribe(posts => {
-        //   this.isFetching = false;
-        //   this.loadedPosts = posts;
-      });
+      }));
   }
 }
