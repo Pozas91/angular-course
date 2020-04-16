@@ -30,6 +30,10 @@
 
     <ul class="navbar-nav">
 
+      <li *ngIf="isAuthenticated" class="nav-item">
+        <button type="button" class="btn btn-outline-danger" (click)="onLogout()">Logout</button>
+      </li>
+      
       <li class="nav-item dropdown" appDropdown *ngIf="isAuthenticated">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
@@ -42,9 +46,6 @@
         </div>
       </li>
 
-      <li *ngIf="isAuthenticated" class="nav-item">
-        <button type="button" class="btn btn-outline-danger" (click)="onLogout()">Logout</button>
-      </li>
     </ul>
 
   </div>
