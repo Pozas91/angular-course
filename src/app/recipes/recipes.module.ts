@@ -8,6 +8,9 @@ import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
 import {RecipeService} from './recipe.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptorService} from '../auth/auth-interceptor.service';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,11 @@ import {AuthInterceptorService} from '../auth/auth-interceptor.service';
     RecipeItemComponent,
     RecipeStartComponent,
     RecipeEditComponent,
+  ],
+  imports: [
+    RouterModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [
     RecipeService,
