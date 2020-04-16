@@ -47,12 +47,18 @@ export class AuthService {
         password,
         returnSecureToken: true
       }
-    ).pipe(catchError(this.handleError));
+    ).pipe(
+      catchError(this.handleError),
+      tap(responseData => {
+        this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn);
+      })
+    );
   }
 
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
+    console.log('this');
     this.user.next(user);
   }
 
