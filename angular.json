@@ -128,6 +128,6 @@
   },
   "defaultProject": "angular-course",
   "cli": {
-    "analytics": false
+    "analytics": "59974b5b-07a6-4ae5-8a2a-41230e4df834"
   }
 }
