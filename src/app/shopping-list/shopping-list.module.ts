@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {ShoppingListComponent} from './shopping-list.component';
 import {ShoppingEditComponent} from './shopping-edit/shopping-edit.component';
-import {ShoppingListService} from './shopping-list.service';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -20,9 +19,6 @@ import {SharedModule} from '../shared/shared.module';
     ]),
     SharedModule
   ],
-  providers: [
-    ShoppingListService,
-  ]
 })
 export class ShoppingListModule {
 

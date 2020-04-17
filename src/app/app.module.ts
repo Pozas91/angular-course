@@ -10,6 +10,7 @@ import {AuthComponent} from './auth/auth.component';
 import {RecipesModule} from './recipes/recipes.module';
 import {ShoppingListModule} from './shopping-list/shopping-list.module';
 import {SharedModule} from './shared/shared.module';
+import {CoreModule} from './core.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {SharedModule} from './shared/shared.module';
     AppRoutingModule,
     RecipesModule,
     ShoppingListModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   bootstrap: [AppComponent],
 })
