@@ -14,7 +14,6 @@ import {BrowserModule} from '@angular/platform-browser';
     DropdownDirective
   ],
   imports: [
-    BrowserModule,
     CommonModule
   ],
   exports: [
