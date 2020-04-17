@@ -4,7 +4,7 @@ import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.compone
 import {PlaceholderDirective} from './placeholder/placeholder.directive';
 import {DropdownDirective} from './dropdown.directive';
 import {CommonModule} from '@angular/common';
-import {BrowserModule} from '@angular/platform-browser';
+import {LoggingService} from '../logging.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import {BrowserModule} from '@angular/platform-browser';
     PlaceholderDirective,
     DropdownDirective,
     CommonModule
-  ]
+  ],
+  providers: [LoggingService]
 })
 export class SharedModule {
 
