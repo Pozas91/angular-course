@@ -28,25 +28,4 @@ export class DataStorageService {
       console.log(response);
     });
   }
-
-  fetchRecipes() {
-
-    return this.http
-      .get<Recipe[]>(
-        'https://curso-angular-4aa37.firebaseio.com/recipes.json',
-      ).pipe(
-        map(recipes => {
-          return recipes.map(recipe => {
-              return {
-                ...recipe,
-                ingredients: recipe.ingredients ? recipe.ingredients : []
-              };
-            }
-          );
-        }),
-        tap(recipes => {
-          this.store.dispatch(new RecipesActions.SetRecipes(recipes));
-        })
-      );
-  }
 }
