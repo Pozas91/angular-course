@@ -1,7 +1,6 @@
 // ng g c recipes/recipes-list --skipTests=true
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Recipe} from '../recipe.model';
-import {RecipeService} from '../recipe.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import * as fromApp from '../../store/app.reducer';
@@ -19,7 +18,6 @@ export class RecipesListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    private recipeService: RecipeService,
     private router: Router,
     private route: ActivatedRoute,
     private store: Store<fromApp.AppState>
@@ -35,8 +33,6 @@ export class RecipesListComponent implements OnInit, OnDestroy {
           this.recipes = recipes;
         }
       );
-
-    this.recipes = this.recipeService.getRecipes();
   }
 
   onNewRecipe() {
