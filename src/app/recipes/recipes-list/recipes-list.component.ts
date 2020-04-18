@@ -19,6 +19,7 @@ export class RecipesListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
+    private recipeService: RecipeService,
     private router: Router,
     private route: ActivatedRoute,
     private store: Store<fromApp.AppState>
