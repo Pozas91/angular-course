@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
 import {BehaviorSubject, throwError} from 'rxjs';
 import {User} from './user.model';
 import {Router} from '@angular/router';
-import {environment} from '../../environments/environment';
 import {Store} from '@ngrx/store';
 import * as AuthActions from './store/auth.actions';
 import * as fromApp from '../store/app.reducer';
@@ -27,39 +25,6 @@ export class AuthService {
   private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router, private store: Store<fromApp.AppState>) {
-  }
-
-  signUp(email: string, password: string) {
-    return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
-      {
-        email,
-        password,
-        returnSecureToken: true
-      }
-    ).pipe(
-      catchError(this.handleError),
-      tap(responseData => {
-        this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn);
-      })
-    );
-  }
-
-  signIn(email: string, password: string) {
-    return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey,
-      {
-        email,
-        password,
-        returnSecureToken: true
-      }
-    )
-      .pipe(
-      catchError(this.handleError),
-      tap(responseData => {
-        this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn);
-      })
-    );
   }
 
   autoLogin() {
@@ -97,8 +62,6 @@ export class AuthService {
   }
 
   logout() {
-    // this.user.next(null);
-
     this.store.dispatch(new AuthActions.Logout());
 
     this.router.navigate(['/auth']);
@@ -120,7 +83,6 @@ export class AuthService {
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
-    // this.user.next(user);
 
     this.store.dispatch(new AuthActions.AuthenticateSuccess({
       email,
