@@ -11,6 +11,12 @@ import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
+
+  @Effect()
+  authSignUp = this.actions$.pipe(
+    ofType(AuthActions.SIGN_UP_START)
+  );
+
   @Effect()
   authLogin = this.actions$.pipe(
     ofType(AuthActions.LOGIN_START),
@@ -27,8 +33,8 @@ export class AuthEffects {
         map(resData => {
           const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000);
 
-          return new AuthActions.Login({
-            email: resData.email, userId: resData.localId, token: resData.idToken, expirationDate: expirationDate
+          return new AuthActions.AuthenticateSuccess({
+            email: resData.email, userId: resData.localId, token: resData.idToken, expirationDate
           });
         }),
         // Error Handling
@@ -37,7 +43,7 @@ export class AuthEffects {
           let errorMessage = 'Oops! Something go wrong';
 
           if (!errorRes.error || !errorRes.error.error) {
-            return of(new AuthActions.LoginFail(errorMessage));
+            return of(new AuthActions.AuthenticateFail(errorMessage));
           }
 
           switch (errorRes.error.error.message) {
@@ -52,7 +58,7 @@ export class AuthEffects {
               break;
           }
 
-          return of(new AuthActions.LoginFail(errorMessage));
+          return of(new AuthActions.AuthenticateFail(errorMessage));
         }),
       );
     }),
@@ -60,7 +66,7 @@ export class AuthEffects {
 
   @Effect({dispatch: false})
   authSuccess = this.actions$.pipe(
-    ofType(AuthActions.LOGIN),
+    ofType(AuthActions.AUTHENTICATE_SUCCESS),
     tap(() => {
       this.router.navigate(['/']);
     })
